@@ -1,0 +1,103 @@
+body {
+	background-color: #2ecc71;
+}
+
+/* Sign in form */
+
+.form-container {
+	background-color: #eee;
+	padding: 20px 0;
+	border-radius: 5px;
+}
+
+.loginform {
+	margin-top: 13%;
+}
+
+.signupform {
+	margin-top: 7%;
+}
+
+.profile-img{
+    width: 96px;
+    height: 96px;
+    margin: 0 auto 10px;
+    display: block;
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+    border-radius: 50%;
+}
+
+.form-signin {
+    max-width: 330px;
+    padding: 15px;
+    margin: 0 auto;
+}
+
+.form-signin .form-group {
+	position: relative;
+}
+
+.form-signin .form-group label {
+	text-transform: uppercase;
+}
+
+.form-signin .form-control {
+	box-shadow: none;
+	border-color: white;
+	color: #27ae60;
+}
+
+.form-signin .form-control:focus {
+	border-color: #27ae60;
+}
+
+input.form-control::-webkit-input-placeholder {
+  color: #bdc3c7;
+}
+
+input.form-control:-ms-input-placeholder,
+input.form-control::-moz-placeholder {
+	color: #bdc3c7;
+}
+
+.btn.btn-primary {
+	background-color: #2ecc71;
+	border-color: #27ae60;
+}
+
+.btn.btn-primary:hover {
+	background-color: #27ae60;
+}
+
+/* ------------------------------------------------- */
+
+/* Link */
+
+.link {
+	color: #95a5a6;
+}
+
+.link:hover {
+	color: #bdc3c7;
+	text-decoration: none;
+}
+
+/* ------------------------------------------------- */
+
+/* Button */
+
+i.fa-fw { 
+	position: absolute; 
+	top: 10px; 
+	left: 90%;
+	color: #bdc3c7;
+}
+
+.btn:focus, 
+.btn:active:focus, 
+.btn.active:focus {
+  outline: none !important;
+}
+
+/* ------------------------------------------------- */

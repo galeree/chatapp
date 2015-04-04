@@ -1,0 +1,55 @@
+<div class="container">
+	<div class="row">
+		<div class="col-sm-6 col-md-4 col-md-offset-4 form-container signupform">
+			<div class="account-wall">
+				{{#if message}}
+				    <h1 class="text-center error-message">{{ message }}</h1>
+				{{/if}}
+				<form class="form-signin"
+					  action="/signup"
+					  method='POST'>
+					  <div class="form-group">
+					  	<label for="username">Username</label>
+					  	<input class="form-control"
+					  		   type="text"
+					  		   name="username"
+					  		   placeholder="Username" required>
+					  </div>
+					  <div class="form-group">
+					  	<label for="password">Password</label>
+					  	<input class="form-control"
+					  		   type="password"
+					  		   name="password"
+					  		   placeholder="Password" required>
+					  </div>
+					  <div class="form-group">
+					  	<label for="email">Email</label>
+					  	<input class="form-control"
+					  		   type="email"
+					  		   name="email"
+					  		   placeholder="Email" required>
+					  </div>
+					  <div class="form-group">
+					  	<label for="firstName">Firstname</label>
+					  	<input class="form-control"
+					  		   type="text"
+					  		   name="firstName"
+					  		   placeholder="Firstname" required>
+					  </div>
+					  <div class="form-group">
+					  	<label for="lastName">Lastname</label>
+					  	<input class="form-control"
+					  		   type="text"
+					  		   name="lastName"
+					  		   placeholder="Lastname" required>
+					  </div>
+					  <div class="row text-center">
+						  <button type="submit" 
+								  class="btn btn-primary"> Register</button>
+						  <a href="/" class="btn btn-default"> Go Back</a>
+					  </div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
