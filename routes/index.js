@@ -1,5 +1,7 @@
 var express = require('express');
 var router = express.Router();
+var defaultPath = 'layout/default';
+var accountPath = 'layout/account';
 
 var isAuthenticated = function (req, res, next) {
 	// if user is authenticated in the session, call the next() to call the next request handler 
@@ -16,7 +18,9 @@ module.exports = function(passport,io){
 	/* GET login page. */
 	router.get('/', function(req, res) {
     	// Display the Login page with any flash message, if any
-		res.render('index', { message: req.flash('message') });
+		res.render('./default', { 
+			message: req.flash('message'),
+			layout: defaultPath});
 	});
 
 	/* Handle Login POST */
@@ -28,7 +32,9 @@ module.exports = function(passport,io){
 
 	/* GET Registration Page */
 	router.get('/signup', function(req, res){
-		res.render('register',{message: req.flash('message')});
+		res.render('default/register',{
+			message: req.flash('message'),
+			layout: defaultPath});
 	});
 
 	/* Handle Registration POST */
@@ -40,7 +46,9 @@ module.exports = function(passport,io){
 
 	/* GET Home Page */
 	router.get('/home', isAuthenticated, function(req, res){
-		res.render('./account', { user: req.user });
+		res.render('./account', { 
+			user: req.user,
+			layout: accountPath });
 	});
 
 	/* Handle Logout */
