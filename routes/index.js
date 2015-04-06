@@ -48,7 +48,6 @@ module.exports = function(passport,io){
 	router.get('/home', isAuthenticated, function(req, res){
 		res.render('./account', { 
 			user: req.user,
-			title: 'title',
 			layout: accountPath });
 	});
 

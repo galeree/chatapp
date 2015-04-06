@@ -18,7 +18,8 @@ var app = express();
 var hbs = require('hbs');
 var port = process.env.PORT || 8080;
 var io = require('socket.io').listen(app.listen(port));
-
+hbs.localsAsTemplateData(app);
+app.locals.foo = "bar";
 
 // View engine setup
 
@@ -72,7 +73,7 @@ app.use(function(req, res, next) {
 if (app.get('env') === 'development') {
     app.use(function(err, req, res, next) {
         res.status(err.status || 500);
-        res.render('error', {
+        res.render('default/error', {
             message: err.message,
             error: err
         });
@@ -83,10 +84,18 @@ module.exports = app;
 
 io.on('connection', function(socket){
   console.log('a user connected');
+  
+  /* User disconnect */
   socket.on('disconnect', function(){
     console.log('user disconnected');
   });
+
+  /* User send chat message */
   socket.on('chat message', function(msg){
-    io.emit('chat message', { message: msg, time: (new Date).getTime()});
+    io.emit('chat message', { 
+      message: msg.message,
+      username: msg.username, 
+      time: (new Date).getTime()
+    });
   });
 });
