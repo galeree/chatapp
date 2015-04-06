@@ -58,5 +58,63 @@ module.exports = function(passport,io){
 		res.redirect('/');
 	});
 
+	/*router.get('/create', function(req, res) {
+		var mongoose = require('mongoose');
+		var Schema = mongoose.Schema;
+		var groupSchema = new Schema({
+		    name: {
+		    	type: String,
+		    	required : true
+		    },
+		    owner_id: {
+		    	type: Schema.Types.ObjectId,
+		    	ref: 'user',
+		    	required : true
+		    },
+		    created_at: {
+		    	type : Date,
+		    	required : true
+		    }
+		});
+
+		var participationSchema = new Schema({
+			user_id: {
+				type: Schema.Types.ObjectId,
+				ref: 'user',
+				required: true
+			},
+			joined_at: {
+				type: Date,
+				required: true
+			},
+			group_id: {
+				type: Schema.Types.ObjectId,
+				ref: 'group',
+				required: true
+			}
+		});
+
+		var messageSchema = new Schema({
+			user_id: {
+				type: Schema.Types.ObjectId,
+				ref: 'user',
+				required: true
+			},
+			group_id: {
+				type: Schema.Types.ObjectId,
+				ref: 'group',
+				required: true
+			},
+			content: {
+				type: String
+			},
+			created_at: {
+				type: Date,
+				required: true
+			}
+		});
+
+	})*/
+
 	return router;
 }
