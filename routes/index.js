@@ -27,7 +27,7 @@ module.exports = function(passport,io){
 	router.post('/login', passport.authenticate('login', {
 		successRedirect: '/home',
 		failureRedirect: '/',
-		failureFlash : true  
+		failureFlash : true
 	}));
 
 	/* GET Registration Page */
@@ -41,13 +41,14 @@ module.exports = function(passport,io){
 	router.post('/signup', passport.authenticate('signup', {
 		successRedirect: '/home',
 		failureRedirect: '/signup',
-		failureFlash : true  
+		failureFlash : true
 	}));
 
 	/* GET Home Page */
 	router.get('/home', isAuthenticated, function(req, res){
 		res.render('./account', { 
 			user: req.user,
+			title: 'title',
 			layout: accountPath });
 	});
 
