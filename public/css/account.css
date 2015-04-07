@@ -1,3 +1,12 @@
+body {
+    padding-top: 4%;
+    background-color: #e5e5e5;
+}
+
+.pointer {
+    cursor: pointer;
+}
+
 #messages { 
 	list-style-type: none; 
 	margin: 0; 
@@ -18,10 +27,66 @@
     border-radius: 50%;
 }
 
-.custom.ui-page-theme-a .ui-bar-inherit {
-	background-color: #2ecc71;
+.container-fluid>.navbar-header.logo {
+    margin-left: 0.2em;
 }
 
-.aa {
-    color: red;
+.navbar .navbar-header.logo>.navbar-brand {
+    color: white;
+    text-transform: uppercase;
+}
+
+.navbar .navbar-nav.navbar-right {
+    margin-right: 0.2em;
+}
+
+.navbar.navbar-default {
+    background-color: #2ecc71;
+    border-color: #e5e5e5;
+}
+
+.navbar-nav.nav>li>a {
+    font-size: 1.9rem;
+    color: white;
+}
+
+.fa.fa-plus {
+    width: 13px;
+}
+
+.nav-tabs.nav-justified {
+  background-color: rgb(90,228,169);
+}
+
+.menu .nav-tabs.nav-justified>li>a {
+    border-radius: 0px;
+    font-size: 2rem;
+    text-transform: uppercase;
+    padding-top: 13px;
+    padding-bottom: 13px;
+    color: white;
+    border-bottom: 0px;
+}
+
+.menu .nav-tabs.nav-justified>li>a:hover {
+  background-color: #27ae60;
+  border-color: transparent;
+  color: black;
+}
+
+.content {
+    margin-top: 8%;
+    background-color: white;
+    padding: 2em 4em;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.content .list-group-item:first-child,
+.content .list-group-item:last-child {
+    border-radius: 0px;
+}
+
+footer {
+    background-color: #2ecc71;
+    margin-top: 3%;
 }

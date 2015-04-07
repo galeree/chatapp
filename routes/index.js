@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 var defaultPath = 'layout/default';
 var accountPath = 'layout/account';
+var roomPath = 'layout/room';
 
 var isAuthenticated = function (req, res, next) {
 	// if user is authenticated in the session, call the next() to call the next request handler 
@@ -49,6 +50,40 @@ module.exports = function(passport,io){
 		res.render('./account', { 
 			user: req.user,
 			layout: accountPath });
+	});
+
+	/* GET Chat Page */
+	router.get('/chat', isAuthenticated, function(req, res){
+		res.render('account/chat', {
+			user: req.user,
+			layout: accountPath
+		});
+	});
+
+	/* GET Add Page */
+	router.get('/add', isAuthenticated, function(req, res){
+		res.render('account/add', {
+			user: req.user,
+			layout: accountPath
+		});
+	});
+
+	/* GET Room Page */
+	router.get('/room', isAuthenticated, function(req, res) {
+		var roomid = req.param('roomid');
+		res.render('account/room', {
+			user: req.user,
+			layout: roomPath,
+			name: roomid
+		});
+	});
+
+	/* GET Profile page */
+	router.get('/profile', isAuthenticated, function(req, res){
+		res.render('account/profile', {
+			user: req.user,
+			layout: accountPath
+		});
 	});
 
 	/* Handle Logout */

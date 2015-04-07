@@ -85,14 +85,23 @@ module.exports = app;
 io.on('connection', function(socket){
   console.log('a user connected');
   
+  /* When user enter a conversation */
+  socket.on('adduser', function(roomid) {
+    console.log('user enter ' + roomid);
+    socket.room = roomid;
+    socket.join(roomid);
+  });
+
   /* User disconnect */
   socket.on('disconnect', function(){
-    console.log('user disconnected');
+    console.log('user disconnected from ' + socket.room);
+    socket.leave(socket.room);
   });
 
   /* User send chat message */
   socket.on('chat message', function(msg){
-    io.emit('chat message', { 
+    console.log('user: ' + msg.username + ' send chat message in ' + socket.room);
+    io.sockets.in(socket.room).emit('chat message', { 
       message: msg.message,
       username: msg.username, 
       time: (new Date).getTime()

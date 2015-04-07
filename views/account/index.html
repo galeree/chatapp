@@ -1,70 +1,55 @@
 <!-- Home page -->
 
-<div data-role="page" class="custom" id="group">
-  <div data-role="header">
-    <div style="padding: 0 20px; float: right">
-      <a href="#" data-ajax="false" 
-         class="ui-btn ui-icon-plus ui-corner-all ui-btn-icon-notext"></a>
-      <a href="/signout" data-ajax="false" 
-         class="ui-btn ui-icon-lock ui-corner-all ui-btn-icon-notext"></a>
-    </div>
-    <div data-role="navbar" style="clear: both;">
-      <ul>
-        <li><a href="#group" data-transition="slide">Group</a></li>
-        <li><a href="#chat" data-transition="slide">Chat</a></li>
-        <li><a href="#" data-transition="slide">Profile</a></li>
-      </ul>
-    </div>
-  </div>
-  <div data-role="main" class="ui-content" id="group">
-      <div class="col-md-10 col-md-offset-1">
-        <img class="profile-img" src='/image/accountlogo.png'></img>
+<div class="container content" ng-controller="GroupCtrl">
+  <div class="row">
+    <div class="col-md-12">
+      
+      <!-- User description -->
+      <div class="description">
+        <img class="profile-img" src='/image/accountlogo.png' style="margin-right: 1%"></img>
         <h3 style="display: inline-block">{{user.username}}</h3>
-        <h3 class="aa">{{title}}</h3>
-        <form class="ui-filterable">
-          <input id="myFilter" data-type="search">
-        </form>
-        <ul data-role="listview" data-filter="true" 
-            data-input="#myFilter" 
-            data-inset="true">
-          <li><a href="#">SwimLane</a></li>
-          <li><a href="#">มวลมหาประชาชน</a></li>
-          <li><a href="#">ภาคคอมคอมเมดี้</a></li>
-          <li><a href="#">Billy</a></li>
-          <li><a href="#">Bob</a></li>
-          <li><a href="#">Calvin</a></li>
-          <li><a href="#">Cameron</a></li>
-          <li><a href="#">Chloe</a></li>
-        </ul>
       </div>
-  </div>
-</div>
 
-<!-- Chat page -->
+      <!-- Search form -->
+      <form class="form-inline" style="margin-top: 1.5%;">
+        <div class="form-group">
+          <input type="text" class="form-control" 
+                 placeholder="Search Group"
+                 name="query">
+        </div>
+        <button type="submit" class="btn btn-primary">
+           <i class="fa fa-search" style="padding: 3px 1px"></i></button>
+      </form>
 
-<div data-role="page" class="custom" id="chat">
-  <div data-role="header">
-    <div style="padding: 0 20px; float: right">
-      <a href="#" data-ajax="false" 
-         class="ui-btn ui-icon-plus ui-corner-all ui-btn-icon-notext"></a>
-      <a href="/signout" data-ajax="false" 
-         class="ui-btn ui-icon-lock ui-corner-all ui-btn-icon-notext"></a>
-    </div>
-    <div data-role="navbar" style="clear: both;">
-      <ul>
-        <li><a href="#group" data-transition="slide">Group</a></li>
-        <li><a href="#chat" data-transition="slide">Chat</a></li>
-        <li><a href="#" data-transition="slide">Profile</a></li>
+      <!-- Pending request -->
+      <div class="page-header">
+        <h3>Pending request</h3>
+      </div>
+      <ul class="list-group grouplist">
+        <li class="list-group-item pointer">Group1</li>
+        <li class="list-group-item pointer">Group2</li>
+        <li class="list-group-item pointer">Group3</li>
+        <li class="list-group-item pointer">Group4</li>
+        <li class="list-group-item pointer">Group5</li>
+        <li class="list-group-item pointer">Group6</li>
+        <li class="list-group-item pointer">Group7</li>
+        <li class="list-group-item pointer">Group8</li>
+      </ul>
+
+      <!-- Group list -->
+      <div class="page-header">
+        <h3>Group</h3>
+      </div>
+      <ul class="list-group grouplist">
+        <li class="list-group-item pointer">Group1</li>
+        <li class="list-group-item pointer">Group2</li>
+        <li class="list-group-item pointer">Group3</li>
+        <li class="list-group-item pointer">Group4</li>
+        <li class="list-group-item pointer">Group5</li>
+        <li class="list-group-item pointer">Group6</li>
+        <li class="list-group-item pointer">Group7</li>
+        <li class="list-group-item pointer">Group8</li>
       </ul>
     </div>
-  </div>
-  <div data-role="main" class="ui-content">
-      <div class="col-md-10 col-md-offset-1">
-      <ul id="messages"></ul>
-      <form action="">
-        <input id="m" class="form-control"/>
-        <a href="" class="ui-btn ui-btn-inline ui-mini" id="send">Send</a>
-      </form>
-      </div>
   </div>
 </div>
