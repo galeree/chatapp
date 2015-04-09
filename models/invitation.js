@@ -1,15 +1,15 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
-var Group = require('./group');
 var User = require('./user');
+var Group = require('./group');
 
-var participationSchema = new Schema({
+var invitationSchema = new Schema({
 	user_id: {
 	    type: Schema.Types.ObjectId,
 	    ref: 'User',
 	    required : true
 	},
-	joined_at: {
+	create_at: {
 	    type: Date,
 	    required : true 
 	},
@@ -17,8 +17,11 @@ var participationSchema = new Schema({
 	    type: Schema.Types.ObjectId,
 	    ref: 'Group',
 	    required : true
+	},
+	status: {
+		type: String
 	}
 });
 
 
-module.exports = mongoose.model('Participation',participationSchema);
+module.exports = mongoose.model('Invitation',invitationSchema);

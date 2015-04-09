@@ -1,8 +1,21 @@
-
 var mongoose = require('mongoose');
+var Schema = mongoose.Schema;
+var User = require('./user');
 
-module.exports = mongoose.model('Group',{
-	name: String,
-	owner_id: String,
-	created_at: Date
+var groupSchema = new Schema({
+	name: {
+	    type: String,
+	    required : true
+	},
+	owner_id: {
+	    type: Schema.Types.ObjectId,
+	    ref: 'User',
+	    required : true 
+	},
+	created_at: {
+	    type: Date,
+	    required : true
+	}
 });
+
+module.exports = mongoose.model('Group', groupSchema);

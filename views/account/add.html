@@ -1,14 +1,30 @@
-<div class="container content">
+<div class="container content" ng-controller="FormCtrl">
 	<h3>Add group</h3>
-	<form action="" method="POST">
+	<form action="/add" method="POST">
 		<div class="form-group">
 			<label for="name">Name:</label>
 			<input class="form-control" name="name" type="text"></input>
 		</div>
+		<ul>
+			<li ng-repeat="user in select" ng-bind="user.username"></li>
+		</ul>
 		<div class="form-group">
 			<label for="invite">Invite:</label>
-			<input class="form-control" name="invite" type="text"></input>
+			<input class="form-control" 
+				   name="invite" 
+				   type="text"
+				   ng-model="query"
+				   ng-model-options="{ debounce: 300 }"
+				   required></input>
 		</div>
+		<ul>
+			<li ng-repeat="account in choice" 
+				ng-bind="account.username"
+				ng-click="adduser(account)"
+				class="pointer"></li>
+		</ul>
+		<input name="member" id="choice" style="display:none">
+		<input name="owner" type="text" value="{{ user._id }}" style="display: none">
 		<div class="row text-center">
 			<button type="submit" class="btn btn-primary">OK</button>
 		</div>

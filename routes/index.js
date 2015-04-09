@@ -54,9 +54,18 @@ module.exports = function(passport,io){
 
 	/* GET Chat Page */
 	router.get('/chat', isAuthenticated, function(req, res){
-		res.render('account/chat', {
-			user: req.user,
-			layout: accountPath
+		var controller = require('../controller/showgroup');
+		var query = req.user._id;
+		controller(query, function(err, result) {
+			if(!err) {
+				res.render('account/chat', {
+					user: req.user,
+					layout: accountPath,
+					groups: result
+				});
+			}else {
+				res.redirect('/home');
+			}
 		});
 	});
 
@@ -66,6 +75,16 @@ module.exports = function(passport,io){
 			user: req.user,
 			layout: accountPath
 		});
+	});
+
+	/* POST Add Page */
+	router.post('/add', isAuthenticated, function(req, res){
+		var name = req.body.name;
+		var owner = req.body.owner;
+		var member = JSON.parse(req.body.member);
+		var controller = require('../controller/addgroup');
+		controller(owner,member,name);
+		res.redirect('/home');
 	});
 
 	/* GET Room Page */
@@ -92,63 +111,58 @@ module.exports = function(passport,io){
 		res.redirect('/');
 	});
 
-	/*router.get('/create', function(req, res) {
-		var mongoose = require('mongoose');
-		var Schema = mongoose.Schema;
-		var groupSchema = new Schema({
-		    name: {
-		    	type: String,
-		    	required : true
-		    },
-		    owner_id: {
-		    	type: Schema.Types.ObjectId,
-		    	ref: 'user',
-		    	required : true
-		    },
-		    created_at: {
-		    	type : Date,
-		    	required : true
-		    }
-		});
-
-		var participationSchema = new Schema({
-			user_id: {
-				type: Schema.Types.ObjectId,
-				ref: 'user',
-				required: true
-			},
-			joined_at: {
-				type: Date,
-				required: true
-			},
-			group_id: {
-				type: Schema.Types.ObjectId,
-				ref: 'group',
-				required: true
+	/* Search suggestion */
+	router.get('/search', function(req, res) {
+		var controller = require('../controller/search');
+		var query = req.param('query');
+		controller(query,function(err, result) {
+			if(!err) {
+				res.json(result);
+			}else {
+				console.log(err);
 			}
 		});
+	});
 
-		var messageSchema = new Schema({
-			user_id: {
-				type: Schema.Types.ObjectId,
-				ref: 'user',
-				required: true
-			},
-			group_id: {
-				type: Schema.Types.ObjectId,
-				ref: 'group',
-				required: true
-			},
-			content: {
-				type: String
-			},
-			created_at: {
-				type: Date,
-				required: true
+	/* GET Group list */
+	router.get('/grouplist', function(req, res) {
+		var controller = require('../controller/showgroup');
+		var query = req.param('user_id');
+		controller(query, function(err, result) {
+			if(!err) {
+				res.json(result);
+			}else {
+				console.log(err);
 			}
 		});
+	});
 
-	})*/
+	/* GET Request list */
+	router.get('/grouprequest', function(req, res) {
+		var controller = require('../controller/showrequest');
+		var query = req.param('user_id');
+		controller(query, function(err, result) {
+			if(!err) {
+				res.json(result);
+			}else {
+				console.log(err);
+			}
+		});
+	});
+
+	/* POST Confirm */
+	router.post('/confirm', function(req, res) {
+		var controller = require('../controller/confirm');
+		controller(req.body);
+		res.json('success');
+	});
+
+	/* Test Database */
+	/*router.get('/test', function(req,res) {
+		var controller = require('../controller/listgroup');
+		controller();
+		res.send('yeah');
+	});*/
 
 	return router;
 }

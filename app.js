@@ -19,7 +19,6 @@ var hbs = require('hbs');
 var port = process.env.PORT || 8080;
 var io = require('socket.io').listen(app.listen(port));
 hbs.localsAsTemplateData(app);
-app.locals.foo = "bar";
 
 // View engine setup
 

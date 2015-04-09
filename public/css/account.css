@@ -79,11 +79,17 @@ body {
     background-color: white;
     padding: 2em 4em;
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    min-height: 64%;
 }
 
 .content .list-group-item:first-child,
 .content .list-group-item:last-child {
     border-radius: 0px;
+}
+
+.content .list-group-item:hover {
+    background-color: rgb(90,228,169);
+    color: white;
 }
 
 footer {
