@@ -11,7 +11,7 @@
       </div>
 
       <!-- Pending request -->
-      <div class="page-header">
+      <div class="page-header" ng-show="requests.length != 0">
         <h3>Pending request</h3>
       </div>
       <ul class="list-group grouplist">
@@ -40,8 +40,22 @@
       </div>
       <ul class="list-group grouplist">
         <li class="list-group-item pointer" 
-            ng-repeat="group in groups" ng-bind="group.group_id.name"></li>
+            ng-repeat="group in groups" 
+            ng-bind="group.group_id.name"
+            ng-click="openGroup(group.group._id._id,group.group_id.name)"></li>
       </ul>
+      <script type="text/ng-template" id="group.html">
+          <div class="modal-header">
+            <button type="button" class="close" aria-label="Close"><span aria-hidden="true" ng-click="cancel()">&times;</span></button>
+            <h4 ng-bind="name"></h4>
+          </div>
+          <div class="modal-body">
+            <p>Test</p>
+          </div>
+          <div class="modal-footer">
+              <button class="btn btn-primary" ng-click="leave()">Leave</button>
+          </div>
+      </script>
     </div>
   </div>
 </div>

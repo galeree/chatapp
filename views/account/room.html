@@ -1,8 +1,14 @@
-<div class="container">
+<div class="container" ng-controller="RoomCtrl">
 	<div class="row">
 		<div class="col-md-10 col-md-offset-1 text-center">
 			<h3>{{name}}</h3>
-			<ul id="messages"></ul>
+			<ul id="messages">
+				<div ng-repeat="message in messages" >
+					<li ng-bind="message.content"></li>
+					<a href="" ng-bind="message.created_at"></a>
+					<a href="" ng-bind="message.user_id.username"></a>
+				</div>
+			</ul>
 			<form action="" class="form-inline">
 				<div class="form-group">
 					<input id="m" class="form-control"/>

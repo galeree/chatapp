@@ -3,6 +3,9 @@ var router = express.Router();
 var defaultPath = 'layout/default';
 var accountPath = 'layout/account';
 var roomPath = 'layout/room';
+var manager = require('../controller/index');
+var Message = require('../models/message');
+var Participation = require('../models/participation');
 
 var isAuthenticated = function (req, res, next) {
 	// if user is authenticated in the session, call the next() to call the next request handler 
@@ -155,6 +158,33 @@ module.exports = function(passport,io){
 		var controller = require('../controller/confirm');
 		controller(req.body);
 		res.json('success');
+	});
+
+	/* GET Message log */
+	router.get('/log', function(req, res) {
+		var user_id = req.param('user_id');
+		var group_id = req.param('group_id');
+		/*manager.getLog(user_id, group_id, function(err, result) {
+			console.log(result);
+			if(!err) res.json('');
+			else res.json('');
+		});*/
+		Participation.find({'group_id' : group_id})
+				 	 .exec(function(err, participation) {
+			if(err) res.json('');
+			else {
+				for(var i=0;i < participation.length;i++) {
+					var join_time = participation[i].joined_at;
+					Message.find({'group_id' : group_id})
+						   .where('created_at').gt(join_time)
+						   .populate('user_id')
+						   .exec(function(err2, messages) {
+						   	if(!err2) res.json(messages);
+						   	else res.json('');
+					});
+				}
+			}
+		});
 	});
 
 	/* Test Database */

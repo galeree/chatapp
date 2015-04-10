@@ -4,6 +4,7 @@ var favicon = require('static-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var manager = require('./controller/index');
 
 // Configure database
 
@@ -25,6 +26,7 @@ hbs.localsAsTemplateData(app);
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'html');
 app.engine('html', hbs.__express);
+app.disable('etag');
 
 app.use(favicon());
 app.use(logger('dev'));
@@ -82,28 +84,34 @@ if (app.get('env') === 'development') {
 module.exports = app;
 
 io.on('connection', function(socket){
-  console.log('a user connected');
   
   /* When user enter a conversation */
   socket.on('adduser', function(roomid) {
-    console.log('user enter ' + roomid);
     socket.room = roomid;
     socket.join(roomid);
   });
 
   /* User disconnect */
   socket.on('disconnect', function(){
-    console.log('user disconnected from ' + socket.room);
     socket.leave(socket.room);
   });
 
   /* User send chat message */
   socket.on('chat message', function(msg){
-    console.log('user: ' + msg.username + ' send chat message in ' + socket.room);
+    
+    // Get time to attach with the message
+    var timestamp = (new Date).getTime();
+    var message = {user_id: msg.user_id ,group_id: msg.group_id,
+                   content: msg.message, time: timestamp};
+
+    // Emit chat message event to client in that particular room
     io.sockets.in(socket.room).emit('chat message', { 
       message: msg.message,
       username: msg.username, 
-      time: (new Date).getTime()
+      time: timestamp
     });
+
+    // Add message to database
+    manager.addMessage(message);
   });
 });

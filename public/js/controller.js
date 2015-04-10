@@ -19,7 +19,7 @@
 				return $http.get('/grouprequest?user_id=' + query);
 			}
 		}
-	})
+	});
 
 	controllers.HomeCtrl = function($scope, $http, groupService, $modal, $log) {
 		var id = $('body').data("id");
@@ -33,7 +33,6 @@
 		$scope.getRequest = function() {
 			groupService.getRequest(id).success(function(data) {
 				$scope.requests = data;
-				console.log(data);
 			});
 		}
 
@@ -59,8 +58,42 @@
 			});
 		};
 
+		$scope.openGroup = function(group_id, name) {
+			var modalInstance = $modal.open({
+				templateUrl: 'group.html',
+				controller: 'GroupCtrl',
+				resolve: {
+					group_id: function() {
+						return group_id;
+					},
+					name: function() {
+						return name;
+					}
+				}
+			});
+			modalInstance.result.then(function() {
+				$scope.getGroup();
+				$scope.getRequest();
+			});
+		}
+
 		$scope.getGroup();
 		$scope.getRequest();
+	}
+
+	controllers.GroupCtrl = function($scope, $http, group_id, name, $modalInstance) {
+		var user_id = $('body').data("id");
+		$scope.name = name;
+		console.log(group_id);
+		console.log(name);
+		
+		$scope.leave = function() {
+			$modalInstance.close();
+		}
+
+		$scope.cancel = function() {
+			$modalInstance.dismiss('cancel');
+		}		
 	}
 
 	controllers.ModalCtrl = function($scope, $http, group_id, name, $modalInstance, req_id) {
@@ -115,6 +148,7 @@
 		}
 
 	}
+
 
 	app.controller(controllers);
 })();

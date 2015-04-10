@@ -5,9 +5,12 @@
       var user = $('body').data("username");
       var roomid = getQueryStrings["roomid"];
         $('#send').click(function(){
+          var roomid = getQueryStrings()["roomid"];
           socket.emit('chat message', { 
             message: $('#m').val(), 
-            username: user}); //send notify msg sent to app.js
+            username: user,
+            user_id: id,
+            group_id: roomid}); //send notify msg sent to app.js
 
           $('#m').val(''); // Clear input box
           return false;
@@ -24,11 +27,11 @@
         /* When user connect */
         socket.on('connect', function() {
           var roomid = getQueryStrings()["roomid"];
-          console.log(roomid);
           socket.emit('adduser', roomid);
         });
   });
 
+  //  Function to get value from query string
   function getQueryStrings() { 
     var assoc  = {};
     var decode = function (s) { return decodeURIComponent(s.replace(/\+/g, " ")); };
