@@ -22,7 +22,9 @@ module.exports = function(id, member, groupname) {
 			for(var i=0;i<member.length;i++) {
 				var invitation = new Invitation({ user_id: member[i].id,
 												  create_at: (new Date).getTime(),
-												  group_id: group._id});
+												  group_id: group._id,
+												  status: 'pending'});
+				console.log(invitation);
 				invitation.save(function(err3) {
 					if(err3) console.log(err3);
 				});

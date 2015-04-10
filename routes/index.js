@@ -145,7 +145,7 @@ module.exports = function(passport,io){
 			if(!err) {
 				res.json(result);
 			}else {
-				console.log(err);
+				res.json('');
 			}
 		});
 	});
