@@ -1,8 +1,11 @@
 <!-- Chat Page -->
+<!-- It's layout is at layout/account.html -->
 <div class="container content">
 	<div class="row">
 		<div class="col-md-12">
 			<ul class="list-group grouplist">
+				<!-- Use hbs template to loop through groups object that is sent -->
+				<!-- in router.get('/chat') in routes/index.js -->
 				{{#each groups}}
 		        <li class="list-group-item">
 		        	<a href="/room?roomid={{group_id._id}}">{{group_id.name}}</a>

@@ -83,6 +83,7 @@ if (app.get('env') === 'development') {
 
 module.exports = app;
 
+// When user connect to the system
 io.on('connection', function(socket){
   
   /* When user enter a conversation */
@@ -101,6 +102,8 @@ io.on('connection', function(socket){
     
     // Get time to attach with the message
     var timestamp = (new Date).getTime();
+
+    // Message variable to pass to manager.addMessage
     var message = {user_id: msg.user_id ,group_id: msg.group_id,
                    content: msg.message, time: timestamp};
 

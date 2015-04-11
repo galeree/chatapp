@@ -1,5 +1,5 @@
 <!-- Home page -->
-
+<!-- Use HomeCtrl as a angularjs controller -->
 <div class="container content" ng-controller="HomeCtrl">
   <div class="row">
     <div class="col-md-12">
@@ -15,11 +15,15 @@
         <h3>Pending request</h3>
       </div>
       <ul class="list-group grouplist">
+        <!-- When click each list open model that associate with it -->
+        <!-- This is set at ng-click -->
         <li class="list-group-item pointer"
             ng-repeat="request in requests" 
             ng-bind="request.group_id.name"
             ng-click="open(request.group_id._id,request.group_id.name,request._id)"></li>
       </ul>
+
+      <!-- Script for modal -->
       <script type="text/ng-template" id="modal.html">
           <div class="modal-header">
             <button type="button" class="close" aria-label="Close"><span aria-hidden="true" ng-click="cancel()">&times;</span></button>
@@ -39,11 +43,15 @@
         <h3>Group</h3>
       </div>
       <ul class="list-group grouplist">
+        <!-- When click each list open model that associate with it -->
+        <!-- This is set at ng-click -->
         <li class="list-group-item pointer" 
             ng-repeat="group in groups" 
             ng-bind="group.group_id.name"
             ng-click="openGroup(group.group._id._id,group.group_id.name)"></li>
       </ul>
+      
+      <!-- Script for modal -->
       <script type="text/ng-template" id="group.html">
           <div class="modal-header">
             <button type="button" class="close" aria-label="Close"><span aria-hidden="true" ng-click="cancel()">&times;</span></button>

@@ -1,7 +1,10 @@
+<!-- Use RoomCtrl as an angularjs controller -->
 <div class="container" ng-controller="RoomCtrl">
 	<div class="row">
 		<div class="col-md-10 col-md-offset-1 text-center">
+			<!-- Show group id -->
 			<h3>{{name}}</h3>
+			<!-- Display chat message here -->
 			<ul id="messages">
 				<div ng-repeat="message in messages" >
 					<li ng-bind="message.content"></li>
@@ -9,10 +12,14 @@
 					<a href="" ng-bind="message.user_id.username"></a>
 				</div>
 			</ul>
+			<!-- Send message form -->
 			<form action="" class="form-inline">
 				<div class="form-group">
+					<!-- Typing message field -->
 					<input id="m" class="form-control"/>
 				</div>
+				<!-- Send message button can style it as you like -->
+				<!-- Important if send button must contain id="send" -->
 				<a href="" class="btn btn-primary" id="send">Send</a>
 			</form>
 		</div>

@@ -1,13 +1,24 @@
+<!-- Add group page -->
+<!-- It's layout is at layout/account.html -->
+<!-- Use angularjs controller FormCtrl as a controller -->
 <div class="container content" ng-controller="FormCtrl">
 	<h3>Add group</h3>
+
+	<!-- Add group form -->
+	<!-- When submit form go to /add with method POST -->
 	<form action="/add" method="POST">
 		<div class="form-group">
 			<label for="name">Name:</label>
 			<input class="form-control" name="name" type="text"></input>
 		</div>
 		<ul>
+			<!-- Loop over $scope.user in FormCtrl -->
+			<!-- Use ng-bind to display a specific value in tag -->
 			<li ng-repeat="user in select" ng-bind="user.username"></li>
 		</ul>
+
+		<!-- Don't worry about ng-model-options just keep it like that -->
+		<!-- ng-model="query" is binded to $scope.query in FormCtrl -->
 		<div class="form-group">
 			<label for="invite">Invite:</label>
 			<input class="form-control" 
@@ -18,14 +29,22 @@
 				   required></input>
 		</div>
 		<ul>
+			<!-- Loop through $scope.account in FormCtrl -->
+			<!-- ng-click usage is when user click the element do something -->
+			<!-- ng-click trigger $scope.adduser function in FormCtrl -->
 			<li ng-repeat="account in choice" 
 				ng-bind="account.username"
 				ng-click="adduser(account)"
 				class="pointer"></li>
 		</ul>
+
+		<!-- display:none not display this input field keep it like that-->
 		<input name="member" id="choice" style="display:none">
+		<!-- value="{{ user._id }}" set value of this input field to equal user._id -->
+		<!-- Keep it like that -->
 		<input name="owner" type="text" value="{{ user._id }}" style="display: none">
 		<div class="row text-center">
+			<!-- Submit button -->
 			<button type="submit" class="btn btn-primary">OK</button>
 		</div>
 	</form>

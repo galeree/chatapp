@@ -22,6 +22,7 @@
 	});
 
 	controllers.HomeCtrl = function($scope, $http, groupService, $modal, $log) {
+		// Get user id
 		var id = $('body').data("id");
 		$scope.groups = [];
 		$scope.requests = [];
@@ -36,6 +37,7 @@
 			});
 		}
 
+		// When user click list in request list trigger this method
 		$scope.open = function(group_id, name, req_id) {
 			var modalInstance = $modal.open({
 				templateUrl: 'modal.html',
@@ -52,12 +54,14 @@
 					}
 				}
 			});
+			// When close modal update Group list and Pending list
 			modalInstance.result.then(function() {
 				$scope.getGroup();
 				$scope.getRequest();
 			});
 		};
 
+		// When user click list in group list trigger this method
 		$scope.openGroup = function(group_id, name) {
 			var modalInstance = $modal.open({
 				templateUrl: 'group.html',
@@ -71,6 +75,7 @@
 					}
 				}
 			});
+			// When close modal update Group list and Pending list
 			modalInstance.result.then(function() {
 				$scope.getGroup();
 				$scope.getRequest();
@@ -121,6 +126,7 @@
 	}
 
 	controllers.FormCtrl = function($scope, $http, searchService) {
+		// Contain list of selected user that is add to group
 		$scope.select = [];
 		
 		/* Watch for list search field change */
