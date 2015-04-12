@@ -4,31 +4,35 @@
       var id = $('body').data("id");
       var user = $('body').data("username");
       var roomid = getQueryStrings["roomid"];
-        $('#send').click(function(){
-          var roomid = getQueryStrings()["roomid"];
-          socket.emit('chat message', { 
-            message: $('#m').val(), 
-            username: user,
-            user_id: id,
-            group_id: roomid}); //send notify msg sent to app.js
 
-          $('#m').val(''); // Clear input box
-          return false;
+      //send notify msg sent to app.js
+      $('#send').click(function(){ 
+        var roomid = getQueryStrings()["roomid"];
+        socket.emit('chat message', { 
+          message: $('#m').val(), 
+          username: user,
+          user_id: id,
+          group_id: roomid
         });
 
-        /* When detect chat message event */
-        socket.on('chat message', function(msg){
-          var time = new Date(msg.time);
-          $('#messages').append($('<li>').text(msg.message))
+        // Clear input box
+        $('#m').val(''); 
+        return false;
+      });
+
+      /* When detect chat message event */
+      socket.on('chat message', function(msg){
+        var time = new Date(msg.time);
+        $('#messages').append($('<li>').text(msg.message))
           .append($('<a>').text(time.toLocaleTimeString()))
           .append($('<a>').text(msg.username));
-        });
+      });
 
-        /* When user connect */
-        socket.on('connect', function() {
-          var roomid = getQueryStrings()["roomid"];
-          socket.emit('adduser', roomid);
-        });
+      /* When user connect */
+      socket.on('connect', function() {
+        var roomid = getQueryStrings()["roomid"];
+        socket.emit('adduser', roomid);
+      });
   });
 
   //  Function to get value from query string

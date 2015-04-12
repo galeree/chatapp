@@ -83,7 +83,7 @@ module.exports = function(passport,io){
 					layout: accountPath,
 					groups: result
 				});
-			}else {
+			} else {
 				// If error redirect to home page
 				res.redirect('/home');
 			}
@@ -119,14 +119,26 @@ module.exports = function(passport,io){
 	/* GET Room Page */
 	router.get('/room', isAuthenticated, function(req, res) {
 		var roomid = req.param('roomid'); // Get roomid from query string
-		
-		// Render page at account/room.html
-		// Use layout at roomPath as a layout
-		// Pass variable name to view
-		res.render('account/room', {
-			user: req.user,
-			layout: roomPath,
-			name: roomid
+		//var userid = req.param('user_id');
+		var userid = req.user._id;
+		var controller = require('../controller/authenticateroom');
+
+		console.log("user_id="+userid+"\nroomid="+roomid+"\n")
+
+		controller(userid, roomid, function(err, result){
+			if(err | result==null){
+				// If some error and/or not in the group, redirect out
+				res.redirect('/chat');
+			} else {
+				// Render page at account/room.html
+				// Use layout at roomPath as a layout
+				// Pass variable name to view
+				res.render('account/room', {
+					user: req.user,
+					layout: roomPath,
+					name: roomid
+				});
+			}
 		});
 	});
 
