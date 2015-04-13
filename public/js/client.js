@@ -23,9 +23,12 @@
       /* When detect chat message event */
       socket.on('chat message', function(msg){
         var time = new Date(msg.time);
-        $('#messages').append($('<li>').text(msg.message))
-          .append($('<a>').text(time.toLocaleTimeString()))
-          .append($('<a>').text(msg.username));
+        $('#messages')
+          .append($('<div id="chatbox2">')
+            .append($('<li id="mpic">').text(msg.message))
+            .append($('<a>').text(time.toLocaleTimeString()))
+            .append($('<b><a>').text(msg.username))
+          );
       });
 
       /* When user connect */
