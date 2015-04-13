@@ -44,6 +44,7 @@
 				controller: 'ModalCtrl',
 				resolve: {
 					group_id: function() {
+						//console.log("group_id = "+group_id +" from public/js/controller.js open resolve (pending group)");
 						return group_id;
 					},
 					name: function() {
@@ -65,9 +66,10 @@
 		$scope.openGroup = function(group_id, name) {
 			var modalInstance = $modal.open({
 				templateUrl: 'group.html',
-				controller: 'GroupCtrl',
+				controller: 'GroupCtrl',//see controllers.GroupCtrl (below)
 				resolve: {
 					group_id: function() {
+						//console.log("group_id = "+group_id +" from openGroup resolve public/js/controller.js");//undefine
 						return group_id;
 					},
 					name: function() {
@@ -89,12 +91,21 @@
 	controllers.GroupCtrl = function($scope, $http, group_id, name, $modalInstance) {
 		var user_id = $('body').data("id");
 		$scope.name = name;
-		console.log(group_id);
-		console.log(name);
+		$scope.group_id = group_id;
 		
 		$scope.leave = function() {
-			$modalInstance.close();
-		}
+	        var data = {'user_id' : user_id, 'name' : $scope.name, 
+	                    'group_id': $scope.group_id};
+	        /*//console.log will show in console's broswer
+	        console.log("step 1 Leave from public/js/controller.js-----------------------");
+	        console.log("user_id = "+user_id +" from public/js/controller.js");//ok
+	        console.log("group_id = "+$scope.group_id +" from public/js/controller.js");//undefine->ok
+	        console.log("name = "+$scope.name +" from public/js/controller.js");//ok must $scope.name
+	        */
+	        $http.post('/leave', data).success(function(result) {
+	            $modalInstance.close();
+	        });
+	    }
 
 		$scope.cancel = function() {
 			$modalInstance.dismiss('cancel');

@@ -44,11 +44,11 @@
       </div>
       <ul class="list-group grouplist">
         <!-- When click each list open model that associate with it -->
-        <!-- This is set at ng-click -->
+        <!-- This is set at ng-click (see openGroup in public/js/controller.js)-->
         <li class="list-group-item pointer" 
             ng-repeat="group in groups" 
             ng-bind="group.group_id.name"
-            ng-click="openGroup(group.group._id._id,group.group_id.name)"></li>
+            ng-click="openGroup(group.group_id._id,group.group_id.name)"></li>
       </ul>
       
       <!-- Script for modal -->

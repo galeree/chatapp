@@ -53,9 +53,17 @@ controller.getLog = function(user_id, group_id, callback) {
 	});
 }
 
-// Leave group module
-controller.leaveGroup = function(user_id, group_id) {
-	// Implement here
+// Leave group module 
+controller.leaveGroup = function(user_id, name, group_id, callback) {
+    // Implement here
+    var search = { 'user_id' : user_id, 'group_id' : group_id };
+	//console.log("user_id= "+user_id+" name= "+name+" group_id= "+group_id+" from controller/index");
+	
+    Participation.find(search).remove(search).exec(function(err, participations) {
+		callback(err,participations)
+	});
+
+
 }
 
 module.exports = controller;

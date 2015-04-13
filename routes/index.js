@@ -223,7 +223,7 @@ module.exports = function(passport,io){
 	router.get('/log', function(req, res) {
 		var user_id = req.param('user_id'); // Get user_id from query string
 		var group_id = req.param('group_id'); // Get group_id from query string
-		
+		//console.log(user_id+" "+group_id+" from GET Message log");//debug
 		// Get log
 		manager.getLog(user_id, group_id, function(err, result) {
 			if(!err) res.json(result); // Send back json object in response to ajax request
@@ -237,6 +237,23 @@ module.exports = function(passport,io){
 		controller();
 		res.send('yeah');
 	});*/
+
+	/* Leave Group */
+    router.post('/leave', function(req,res) {
+        var user_id = req.param('user_id'); // Get user_id from controller.js
+        var name = req.param('name'); // Get name from controller.js
+        var group_id = req.param('group_id');// Get group_id from controller.js
+
+        //console.log(user_id+" "+name+" "+group_id+" From Step2 routes/index.js");//debug (show in cmd)
+        manager.leaveGroup(user_id, name, group_id, function(err, result) {
+            if(!err) res.json(result);
+            else res.json('');
+        });
+
+        console.log("step 2 route'/leave' from routes/index.js complete");
+        res.send('yeah');
+
+    });
 
 	return router;
 }
