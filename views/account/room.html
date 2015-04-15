@@ -1,16 +1,41 @@
 <!-- Use RoomCtrl as an angularjs controller -->
 
 <style>
+	#msg{
+		margin-top: 2px;
+		background: #EEEEEE;
+		height: 10%;
+		padding: 20px;
+		border-radius: 25px;
+		border: 2px solid #AAAAAA;
+	}
+	#room{
+		height: 85%;
+		border-radius: 25px;
+		padding: 30px; 
+		padding-top: 0px;
+	    margin: 20px;
+	    border: 2px solid #70CC7F;
+	    background: #70CC7F;
+	}
+	#chatlog{
+		overflow-y: scroll;
+		background: #EEEEEE;
+		height: 75%;
+		padding: 20px;
+		border-radius: 25px;
+		border: 2px solid #AAAAAA;
+	}
 	#chatbox{
 		border-radius: 25px;
-	    background: #EEEEEE;
+	    background: #C0F0D0;
 	    padding: 20px; 
 	    margin: 10px;
 	    border: 2px;
 	    clear: both;
   	}
   	#chatbox2{
-  		background: #B8F2C6;
+  		background: #CFFFDF;
 	   	border-radius: 25px;
 	    padding: 20px; 
 	    margin: 10px;
@@ -30,29 +55,33 @@
 <div class="container" ng-controller="RoomCtrl">
 	<div class="row">
 		<div class="col-md-10 col-md-offset-1">
-			<!-- Show group id -->
-			<div class="page-header">
-				<h3>{{name}}</h3>
+			<div id = "room">
+				<!-- Show group id -->
+				<div class="page-header">
+					<h3>{{name}}</h3>
+				</div>
+				<div id = "chatlog">
+					<!-- Display chat message here -->
+					<ul id="messages">
+						<div ng-repeat="message in messages" id="chatbox">
+							<img class="profile-img" src='/image/accountlogo.png' id="pic"></img>
+							<li ng-bind="message.content"></li>
+							<a href="" ng-bind="convert(message.created_at)"></a>
+							<b><a href="" ng-bind="message.user_id.username"></a></b>
+						</div>
+					</ul>
+				</div>
+				<!-- Send message form -->
+				<form action="" class="form-inline" id= "msg">
+					<div class="form-group">
+						<!-- Typing message field -->
+						<input id="m" class="form-control">
+					</div>
+						<!-- Send message button can style it as you like -->
+						<!-- Important if send button must contain id="send" -->
+						<a href="" class="btn btn-primary" id="send">Send</a>
+					</form>
 			</div>
-			<!-- Display chat message here -->
-			<ul id="messages">
-				<div ng-repeat="message in messages" id="chatbox">
-					<img class="profile-img" src='/image/accountlogo.png' id="pic"></img>
-					<li ng-bind="message.content"></li>
-					<a href="" ng-bind="convert(message.created_at)"></a>
-					<b><a href="" ng-bind="message.user_id.username"></a></b>
-				</div>
-			</ul>
-			<!-- Send message form -->
-			<form action="" class="form-inline" style="clear: both">
-				<div class="form-group">
-					<!-- Typing message field -->
-					<input id="m" class="form-control"/>
-				</div>
-				<!-- Send message button can style it as you like -->
-				<!-- Important if send button must contain id="send" -->
-				<a href="" class="btn btn-primary" id="send">Send</a>
-			</form>
 		</div>
 	</div>
 </div>
