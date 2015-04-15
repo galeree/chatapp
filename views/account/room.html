@@ -39,7 +39,7 @@
 				<div ng-repeat="message in messages" id="chatbox">
 					<img class="profile-img" src='/image/accountlogo.png' id="pic"></img>
 					<li ng-bind="message.content"></li>
-					<a href="" ng-bind="message.created_at"></a>
+					<a href="" ng-bind="convert(message.created_at)"></a>
 					<b><a href="" ng-bind="message.user_id.username"></a></b>
 				</div>
 			</ul>
@@ -53,12 +53,6 @@
 				<!-- Important if send button must contain id="send" -->
 				<a href="" class="btn btn-primary" id="send">Send</a>
 			</form>
-
-			<div class= "row">
-				<div class="col-md-1 col-md-offset-10">
-					<a href="/chat" class="btn btn-info btn-lg">Back</a>
-				</div>
-			</div>
 		</div>
 	</div>
 </div>

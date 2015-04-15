@@ -28,6 +28,11 @@
       		});
       	}
 
+      	$scope.convert = function(timestamp) {
+      		var time = new Date(timestamp);
+      		return time.toLocaleTimeString();
+      	}
+
 		$scope.getLog();
 	}
 
