@@ -1,7 +1,7 @@
 <!-- Chat Page -->
 <!-- It's layout is at layout/account.html -->
-<div class="container content">
-	<div class = "page-header">
+<div class="container content" style = "border-radius: 25px;">
+	<div class = "page-header" style = "color: green;">
 		<h3>All Group</h3>
 	</div>
 	<div class="row">
@@ -10,7 +10,7 @@
 				<!-- Use hbs template to loop through groups object that is sent -->
 				<!-- in router.get('/chat') in routes/index.js -->
 				{{#each groups}}
-		        <li class="list-group-item">
+		        <li class="list-group-item"  style = "border-radius: 25px; margin: 5px;">
 		        	<a href="/room?roomid={{group_id._id}}">{{group_id.name}}</a>
 		        </li>
 		        {{/each}}

@@ -1,9 +1,10 @@
 <!-- Add group page -->
 <!-- It's layout is at layout/account.html -->
 <!-- Use angularjs controller FormCtrl as a controller -->
-<div class="container content" ng-controller="FormCtrl">
-	<h3>Add group</h3>
-
+<div class="container content" ng-controller="FormCtrl" style = "border-radius: 25px;">
+	<div class="page-header">
+		<h3 style = "color: green;">Add group</h3>
+	</div>
 	<!-- Add group form -->
 	<!-- When submit form go to /add with method POST -->
 	<form action="/add" method="POST">

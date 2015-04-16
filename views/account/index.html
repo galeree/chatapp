@@ -1,17 +1,17 @@
 <!-- Home page -->
 <!-- Use HomeCtrl as a angularjs controller -->
-<div class="container content" ng-controller="HomeCtrl">
+<div class="container content" ng-controller="HomeCtrl" style = "border-radius: 25px;">
   <div class="row">
     <div class="col-md-12">
       
       <!-- User description -->
-      <div class="description">
+      <div class="description" >
         <img class="profile-img" src='/image/accountlogo.png' style="margin-right: 1%"></img>
-        <h3 style="display: inline-block">{{user.username}}</h3>
+        <h3 style="display: inline-block; color: green;">{{user.username}}</h3>
       </div>
 
       <!-- Pending request -->
-      <div class="page-header" ng-show="requests.length != 0">
+      <div class="page-header" ng-show="requests.length != 0" style = "color: green;">
         <h3>Pending request</h3>
       </div>
       <ul class="list-group grouplist">
@@ -20,7 +20,8 @@
         <li class="list-group-item pointer"
             ng-repeat="request in requests" 
             ng-bind="request.group_id.name"
-            ng-click="open(request.group_id._id,request.group_id.name,request._id)"></li>
+            ng-click="open(request.group_id._id,request.group_id.name,request._id)"
+            style = "border-radius: 25px; margin: 5px;"></li>
       </ul>
 
       <!-- Script for modal -->
@@ -39,7 +40,7 @@
       </script>
 
       <!-- Group list -->
-      <div class="page-header" ng-show="groups.length != 0">
+      <div class="page-header" ng-show="groups.length != 0" style = "color: green;">
         <h3>Group</h3>
       </div>
       <ul class="list-group grouplist">
@@ -48,7 +49,8 @@
         <li class="list-group-item pointer" 
             ng-repeat="group in groups" 
             ng-bind="group.group_id.name"
-            ng-click="openGroup(group.group_id._id,group.group_id.name)"></li>
+            ng-click="openGroup(group.group_id._id,group.group_id.name)"
+            style = "border-radius: 25px; margin: 5px;"></li>
       </ul>
       
       <!-- Script for modal -->
