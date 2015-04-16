@@ -2,10 +2,11 @@
 
 <style>
 	#msg{
-		margin-top: 2px;
+		margin-top: 5px;
 		background: #EEEEEE;
 		height: 10%;
 		padding: 20px;
+		padding-left: 0px;
 		border-radius: 25px;
 		border: 2px solid #AAAAAA;
 	}
@@ -14,9 +15,8 @@
 		border-radius: 25px;
 		padding: 30px; 
 		padding-top: 0px;
-	    margin: 20px;
-	    border: 2px solid #70CC7F;
-	    background: #70CC7F;
+	    border: 2px solid #e5e5e5;
+	    background: #2ecc71;
 	}
 	#chatlog{
 		overflow-y: scroll;
@@ -29,21 +29,16 @@
 	#chatbox{
 		border-radius: 25px;
 	    background: #C0F0D0;
-	    padding: 20px; 
+	    padding: 10px; 
 	    margin: 10px;
 	    border: 2px;
 	    clear: both;
   	}
   	#chatbox2{
-  		background: #CFFFDF;
+  		background: #C9E2FF;
 	   	border-radius: 25px;
 	    padding: 20px; 
 	    margin: 10px;
-	    border: 2px;
-  	}
-  	#footer{
-  		background: #B8F2C6;
-	    padding: 20px; 
 	    border: 2px;
   	}
   	#pic{
@@ -72,15 +67,19 @@
 					</ul>
 				</div>
 				<!-- Send message form -->
-				<form action="" class="form-inline" id= "msg">
-					<div class="form-group">
-						<!-- Typing message field -->
-						<input id="m" class="form-control">
+				<form action="" class="form" id= "msg">
+					<div class = "col-xs-11">
+						<div class="form-group">
+							<!-- Typing message field -->
+							<input id="m" class="form-control">
+						</div>
 					</div>
-						<!-- Send message button can style it as you like -->
-						<!-- Important if send button must contain id="send" -->
+					<!-- Send message button can style it as you like -->
+					<!-- Important if send button must contain id="send" -->
+					<div class = "col-xs-1">
 						<a href="" class="btn btn-primary" id="send">Send</a>
-					</form>
+					</div>
+				</form>
 			</div>
 		</div>
 	</div>

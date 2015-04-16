@@ -19,6 +19,41 @@
   <script src="/socket.io/socket.io.js"></script>
   <!-- Include client.js to manage chat message -->
   <script src="/js/client.js"></script>
+  <script language="JavaScript"><!--
+        function myHeight() {
+            if (document.layers)
+                return document.body.document.height - window.innerHeight;
+            else if (document.all)
+                return 0; // cannot get current window size
+            else
+                return 200; // approx height (adjust as necessary)
+        }
+
+        function myScroll() {
+            documentYposition += scrollAmount;
+            window.scroll(0,documentYposition);
+            if (document.layers) {
+                if (documentYposition > documentLength || documentYposition == 0)
+                    scrollAmount *= -1;
+            }
+            else if (document.all) {
+                if (document.body.scrollTop == lastScrollTop || document.body.scrollTop == 0)
+                    scrollAmount *= -1;
+            }
+            setTimeout('myScroll()',scrollInterval);
+        }
+
+        function start() {
+            documentLength = myHeight();
+            myScroll();
+        }
+
+        var documentLength;
+        var scrollAmount = 15;          // scroll by 100 pixels each time
+        var scrollInterval = 100;       // number of milliseconds between scrolls
+        var documentYposition = 0;
+        var lastScrollTop = 0;         // workaround for Internet Explorer
+//--></script>
 </head>
 <body data-id="{{user._id}}"
       data-username="{{user.username}}"
@@ -35,10 +70,20 @@
       </ul>
     </div>
   </nav>
-  <ul class="nav nav-tabs nav-justified">
-    <li role="presentation"><a href="/chat">Back</a></li>
-  </ul>
+
+  <div class = "container">
+    <div class="row">
+      <a href="/chat"><div class="col-md-10 col-md-offset-1" style="border-radius: 25px;
+      padding: 15px; 
+      border: 2px;
+      background: #ABD2FF;
+      text-align: center;">
+        back
+      </div></a>
+    </div>
+  </div>
   {{{body}}}
   <script src="/js/bootstrap.min.js"></script>
 </body>
+
 </html>

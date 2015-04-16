@@ -25,7 +25,8 @@
         var time = new Date(msg.time);
         $('#messages')
           .append($('<div id="chatbox2">')
-            .append($('<li id="mpic">').text(msg.message))
+            .append($('<img class="profile-img" src="/image/accountlogo.png" id="pic">').text(msg.message))
+            .append($('<li>').text(msg.message))
             .append($('<a>').text(time.toLocaleTimeString()))
             .append($('<b><a>').text(msg.username))
           );
