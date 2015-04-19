@@ -89,11 +89,12 @@ body {
 }
 
 .content {
-    margin-top: 180px;
+    margin-top: 140px;
     background-color: white;
     padding: 2em 4em;
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     min-height: 64%;
+    max-width: 700px;
 }
 
 .content .list-group-item:first-child,

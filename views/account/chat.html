@@ -11,7 +11,7 @@
 				<!-- in router.get('/chat') in routes/index.js -->
 				{{#each groups}}
 		        <li class="list-group-item"  style = "border-radius: 25px; margin: 5px;">
-		        	<a href="/room?roomid={{group_id._id}}">{{group_id.name}}</a>
+		        	<a href="/room?roomid={{group_id._id}}" style="text-decoration: none; color: black;">{{group_id.name}}</a>
 		        </li>
 		        {{/each}}
 	      </ul>
