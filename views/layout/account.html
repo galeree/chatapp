@@ -23,49 +23,74 @@
       ng-app="account">
   <nav class="navbar navbar-default navbar-fixed-top">
     <div class="container-fluid">
-      <div class="navbar-header logo">
-        <a class="navbar-brand">Chat App</a>
+      <div class = "row">
+        <div class = "row-same-height">
+          <div class = "col-lg-3 col-xs-height col-middle " style = "background: #d6ffed; width: 362px;">
+            <img class="logo-img" src='/image/Applogo.png'></img>
+          </div>
+          <div class = "col-md-12">
+            <div class = "row">
+              <div class = "row-same-height">
+                <div class="col-md-1 col-xs-height" style="vertical-align: middle"><div class="description" >
+                  <img class="profile-img" src='/image/accountlogo.png' style="margin-right: 1%"></img>
+                  <h3 style="display: inline-block; color: green;">{{user.username}}</h3>
+                </div></div>
+                <div class = "col-md-3 col-xs-height col-full-height col.min"> <div class="description" >
+                  <ul class="nav navbar-nav navbar-right">
+                    <li>
+                      <a href="/add" data-toggle="tooltip" 
+                      data-placement="bottom" title="add group">
+                      <i class="fa fa-plus"></i>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="/signout" data-toggle="tooltip" 
+                      data-placement="bottom" title="log out">
+                      <i class="fa fa-sign-out"></i>
+                      </a>
+                    </li>
+                  </ul>
+                </div></div>
+              </div>
+            </div></div>
+            <div class = "row">
+              <div class = "row-same-height">
+                <div class= "col-md-12 col-bottom">
+                  <div class="menu">
+                    <ul class="nav nav-tabs nav-justified">
+                      <li role="presentation">
+                        <a href="/home" data-toggle="tootip"
+                           data-placement="bottom" title="group"><i class="fa fa-users"></i></a>
+                      </li>
+                      <li role="presentation">
+                        <a href="/chat" data-toggle="tooltip"
+                           data-placement="bottom" title="chat"><i class="fa fa-comment"></i></a>
+                      </li>
+                      <li role="presentation">
+                        <a href="/profile" data-toggle="tooltip"
+                           data-placement="bottom" title="profile"><i class="fa fa-list"></i></a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          
+        </div>
       </div>
-
-      <ul class="nav navbar-nav navbar-right">
-        <li>
-          <a href="/add" data-toggle="tooltip" 
-            data-placement="bottom" title="add group">
-            <i class="fa fa-plus"></i>
-          </a>
-        </li>
-        <li>
-          <a href="/signout" data-toggle="tooltip" 
-             data-placement="bottom" title="log out">
-            <i class="fa fa-sign-out"></i>
-          </a>
-        </li>
-      </ul>
+        
+      
     </div>
-    <div class="menu">
-      <ul class="nav nav-tabs nav-justified">
-        <li role="presentation">
-          <a href="/home" data-toggle="tootip"
-             data-placement="bottom" title="group"><i class="fa fa-users"></i></a>
-        </li>
-        <li role="presentation">
-          <a href="/chat" data-toggle="tooltip"
-             data-placement="bottom" title="chat"><i class="fa fa-comment"></i></a>
-        </li>
-        <li role="presentation">
-          <a href="/profile" data-toggle="tooltip"
-             data-placement="bottom" title="profile"><i class="fa fa-list"></i></a>
-        </li>
-      </ul>
-    </div>
+    
 
   </nav>
   {{{body}}}
   <footer>
     <div class="container-fluid">
-      <p>this is footer</p>
-      <p>footer</p>
-      <p>footer</p>
+      <p style = "float:right; vetical-align: middle; color: #FFFFFF">for distributed System Essential</p>
+      <br>
+      <br>
+      <p style = "font-size: 20px; float:right; vetical-align: middle; color: #FFFFFF">ChatApp</p>
     </div>
   </footer>
   <script src="/js/bootstrap.min.js"></script>
