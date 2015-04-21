@@ -59,29 +59,21 @@
       data-username="{{user.username}}"
       ng-app="chat">
   <nav class="navbar navbar-default navbar-fixed-top">
-    <div class="container-fluid">
+    <div class="container">
       <div class="navbar-header">
         <a class="navbar-brand">ChatApp</a>
       </div>
 
       <ul class="nav navbar-nav navbar-right">
+        <li><button href ="/chat" type="button" class="btn btn-default navbar-btn" aria-label="Left Align" style="vertical-align: middle; margin: 10px;">
+          <a href="/chat" class="glyphicon glyphicon-arrow-left"></a>
+        </button></li>
         <li><a href=""><i class="fa fa-plus"></i></a></li>
         <li><a href="/signout"><i class="fa fa-sign-out"></i></a></li>
+        
       </ul>
     </div>
   </nav>
-
-  <div class = "container">
-    <div class="row">
-      <a href="/chat"><div class="col-md-10 col-md-offset-1" style="border-radius: 25px;
-      padding: 15px; 
-      border: 2px;
-      background: #ABD2FF;
-      text-align: center;">
-        back
-      </div></a>
-    </div>
-  </div>
   {{{body}}}
   <script src="/js/bootstrap.min.js"></script>
 </body>

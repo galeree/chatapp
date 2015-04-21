@@ -5,13 +5,14 @@
 		margin-top: 5px;
 		background: #EEEEEE;
 		height: 10%;
-		padding: 20px;
+		padding: 15px;
 		padding-left: 0px;
 		border-radius: 25px;
 		border: 2px solid #AAAAAA;
 	}
 	#room{
 		height: 85%;
+		margin-top: 50px;
 		border-radius: 25px;
 		padding: 30px; 
 		min-height: 700px;
@@ -62,9 +63,10 @@
 					<ul id="messages">
 						<div ng-repeat="message in messages" id="chatbox">
 							<img class="profile-img" src='/image/accountlogo.png' id="pic"></img>
-							<li ng-bind="message.content"></li>
-							<a href="" ng-bind="convert(message.created_at)"></a>
 							<b><a href="" ng-bind="message.user_id.username"></a></b>
+							<a href="" ng-bind="convert(message.created_at)"></a>
+							
+							<li ng-bind="message.content"></li>
 						</div>
 					</ul>
 				</div>
