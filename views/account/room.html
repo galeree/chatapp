@@ -63,8 +63,8 @@
 					<ul id="messages">
 						<div ng-repeat="message in messages" id="chatbox">
 							<img class="profile-img" src='/image/accountlogo.png' id="pic"></img>
-							<b><a href="" ng-bind="message.user_id.username"></a></b>
-							<a href="" ng-bind="convert(message.created_at)"></a>
+							<b><span href="" ng-bind="message.user_id.username"></span></b>
+							<span href="" ng-bind="convert(message.created_at)"></span>
 							
 							<li ng-bind="message.content"></li>
 						</div>
