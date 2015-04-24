@@ -121,11 +121,15 @@ module.exports = function(passport,io){
 		var roomid = req.param('roomid'); // Get roomid from query string
 		//var userid = req.param('user_id');
 		var userid = req.user._id;
-		var controller = require('../controller/authenticateroom');
+		var controllerAuthen = require('../controller/authenticateroom');
+		var controllerGetGroupName = require('../controller/getgroupname')
+		var groupname = "";
+		
+		controllerGetGroupName(roomid, function(err, result){
+			if(!err)groupname = result;
+		});
 
-		console.log("user_id="+userid+"\nroomid="+roomid+"\n")
-
-		controller(userid, roomid, function(err, result){
+		controllerAuthen(userid, roomid, function(err, result){
 			if(err | result==null){
 				// If some error and/or not in the group, redirect out
 				res.redirect('/chat');
@@ -136,7 +140,7 @@ module.exports = function(passport,io){
 				res.render('account/room', {
 					user: req.user,
 					layout: roomPath,
-					name: roomid
+					name: groupname
 				});
 			}
 		});
