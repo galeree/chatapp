@@ -158,12 +158,16 @@
 
 		/* Add user to group */
 		$scope.adduser = function(account) {
+			var user_name = $('body').data("username");
 			var obj = {username: account.username, id: account._id };
-			$scope.select.push(obj);
-			var elem = document.getElementById("choice");
-			elem.value = JSON.stringify($scope.select);
+			if(account.username == user_name){
+				console.log("Not invite yourself!!!");
+			} else{
+				$scope.select.push(obj);
+				var elem = document.getElementById("choice");
+				elem.value = JSON.stringify($scope.select);
+			}
 		}
-
 	}
 
 
