@@ -20,6 +20,24 @@
         return false;
       });
 
+      $('#m').keypress(function(event) {
+        if (event.keyCode == 13) {
+          event.preventDefault();
+
+          var roomid = getQueryStrings()["roomid"];
+          socket.emit('chat message', { 
+            message: $('#m').val(), 
+            username: user,
+            user_id: id,
+            group_id: roomid
+          });
+
+          // Clear input box
+          $('#m').val(''); 
+          return false;
+        }
+      });
+
       /* When detect chat message event */
       socket.on('chat message', function(msg){
         var time = new Date(msg.time);
