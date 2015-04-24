@@ -24,7 +24,7 @@
         if (event.keyCode == 13) {
           event.preventDefault();
 
-          if(m$('#m').val()="") return false;
+          //if(m$('#m').val()=="") return false;
 
           var roomid = getQueryStrings()["roomid"];
           socket.emit('chat message', { 
