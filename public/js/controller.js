@@ -133,6 +133,14 @@
 	controllers.ModalCtrl = function($scope, $http, group_id, name, $modalInstance, req_id) {
 		var user_id = $('body').data("id");
 		
+		var data12 = {'group_id': group_id};// send what
+		console.log(data12);
+		$scope.participants = [];
+
+		$http.post('/groupparticipants' , data12).success(function(result) {
+	        $scope.participants=result;
+	    });
+
 		$scope.name = name;
 		$scope.accept = function() {
 			var data = {'user_id' : user_id, 'req_id': req_id, 

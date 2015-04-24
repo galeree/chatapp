@@ -31,7 +31,11 @@
             <h4 ng-bind="name"></h4>
           </div>
           <div class="modal-body">
-            <p>Test</p>
+            <ul class="list-group grouplist">
+              <li class="list-group-item pointer"
+              ng-repeat="participant in participants"
+              ng-bind="participant.user_id.username"></li>
+            </ul>
           </div>
           <div class="modal-footer">
               <button class="btn btn-primary" ng-click="accept()">Accept</button>
