@@ -213,6 +213,22 @@ module.exports = function(passport,io){
 		});
 	});
 
+	router.post('/groupparticipants',function(req, res){
+		var controller = require('../controller/showparticipant');
+		var query = req.param('group_id');
+
+		console.log("log from index.js="+"1234");
+
+		controller(query, function(err, result){
+			if(!err) {
+				// Send back json object in response to ajax request
+				res.json(result);
+			} else {
+				res.json('');
+			}
+		});
+	});
+
 	/* POST Confirm */
 	router.post('/confirm', function(req, res) {
 		// Include confirm module

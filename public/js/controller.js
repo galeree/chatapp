@@ -31,14 +31,20 @@
 				$scope.groups = data;
 			});
 		}
+
 		$scope.getRequest = function() {
 			groupService.getRequest(id).success(function(data) {
 				$scope.requests = data;
+
 			});
 		}
 
+		
+
+
 		// When user click list in request list trigger this method
 		$scope.open = function(group_id, name, req_id) {
+
 			var modalInstance = $modal.open({
 				templateUrl: 'modal.html',
 				controller: 'ModalCtrl',
@@ -55,6 +61,7 @@
 					}
 				}
 			});
+
 			// When close modal update Group list and Pending list
 			modalInstance.result.then(function() {
 				$scope.getGroup();
@@ -77,6 +84,7 @@
 					}
 				}
 			});
+
 			// When close modal update Group list and Pending list
 			modalInstance.result.then(function() {
 				$scope.getGroup();
@@ -92,7 +100,17 @@
 		var user_id = $('body').data("id");
 		$scope.name = name;
 		$scope.group_id = group_id;
-		
+
+		$scope.participants = ["111", "222", "333", "4444"];
+
+		var data12 = {'group_id': group_id};// send what
+		console.log(data12);
+		$scope.participants = [];
+
+		$http.post('/groupparticipants' , data12).success(function(result) {
+	        $scope.participants=result;
+	    });
+
 		$scope.leave = function() {
 	        var data = {'user_id' : user_id, 'name' : $scope.name, 
 	                    'group_id': $scope.group_id};
@@ -114,6 +132,7 @@
 
 	controllers.ModalCtrl = function($scope, $http, group_id, name, $modalInstance, req_id) {
 		var user_id = $('body').data("id");
+		
 		$scope.name = name;
 		$scope.accept = function() {
 			var data = {'user_id' : user_id, 'req_id': req_id, 
@@ -134,6 +153,9 @@
 		$scope.cancel = function() {
 			$modalInstance.dismiss('cancel');
 		};
+
+
+
 	}
 
 	controllers.FormCtrl = function($scope, $http, searchService) {
