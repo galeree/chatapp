@@ -6,6 +6,9 @@
 
 # Feature
 - Send Message between individual user
+- Create your own user
 - Create/ Edit or remove group chat
 - Message backup
 - Search user
+
+<b>Link:</b> http://dissyschat.herokuapp.com/
