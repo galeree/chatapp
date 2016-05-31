@@ -1,7 +1,8 @@
 # Chat Application
-This chat application is developed using Node.js and Express.js as backend framework.<br/>
-Mongodb as a database and using mongoose package as a database connector.<br/>
-Angularjs as frontend and Socket.io for messaging framework.
+- Backend framework using Node.js and Express.js.<br/>
+- Database using Mongodb as a database and using mongoose package as a database connector.<br/>
+- Frontend using Angularjs.
+- Messaging framework using Socket.io library.
 # Feature
 - Send Message between individual user
 - Create/ Edit or remove group chat
