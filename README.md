@@ -11,4 +11,4 @@
 - Message backup
 - Search user
 
-<b>Link:</b> http://dissyschat.herokuapp.com/
+<h3>Link:</h3> http://dissyschat.herokuapp.com/
