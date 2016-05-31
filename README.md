@@ -11,5 +11,9 @@
 - Message backup
 - Search user
 
+# Deployment
+- Deploy at heroku
+- Use Modulus as a mongoDB service
+
 # Link
 http://dissyschat.herokuapp.com/
