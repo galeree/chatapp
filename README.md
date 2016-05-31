@@ -7,7 +7,7 @@
 # Feature
 - Send Message between individual user
 - Create your own user
-- Create/ Edit or remove group chat
+- Create/ Edit/ Remove or Delete group chat
 - Message backup
 - Search user
 
